@@ -7,8 +7,8 @@ export default {
   logout () {
     return Reposiotry.delete('/logout')
   },
-  accountActivations (token, email) {
-    return Reposiotry.get(`/account_activations/${token}/edit?email=${email}`)
+  accountActivations (token, payload) {
+    return Reposiotry.put(`/account_activations/${token}`, payload)
   },
   passwordResetsCreate (payload) {
     return Reposiotry.post('/password_resets', payload)
