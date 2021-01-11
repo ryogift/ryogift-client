@@ -1,5 +1,5 @@
 <template>
-  <div class="password-resets">
+  <div class="password-resets-new">
     <div class="container max-width is-max-desktop">
       <PasswordResetSection />
     </div>
@@ -10,7 +10,7 @@
 import PasswordResetSection from '@/components/organisms/PasswordResetSection.vue'
 
 export default {
-  name: 'PasswordResets',
+  name: 'PasswordResetsNew',
   components: {
     PasswordResetSection
   }

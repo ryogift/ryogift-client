@@ -1,5 +1,5 @@
 <template>
-  <div class="account-activations">
+  <div class="account-activations-edit">
     <div class="container max-width is-max-desktop">
       <InfoNotification v-if="infoMessage" :message="infoMessage" />
       <ErrorNotification v-if="errorMessage" :message="errorMessage" />
@@ -10,12 +10,12 @@
 <script>
 import InfoNotification from '@/components/atoms/Notification/InfoNotification.vue'
 import ErrorNotification from '@/components/atoms/Notification/ErrorNotification.vue'
-import { ReposiotryFactory } from './../api/RepositoryFactory'
+import { ReposiotryFactory } from './../../api/RepositoryFactory'
 
 const AuthRepository = ReposiotryFactory.get('auth')
 
 export default {
-  name: 'AccountActivations',
+  name: 'AccountActivationsEdit',
   components: {
     InfoNotification,
     ErrorNotification
