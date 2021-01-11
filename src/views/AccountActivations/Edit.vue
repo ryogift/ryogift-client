@@ -33,7 +33,12 @@ export default {
     async accountActivations () {
       try {
         const { token, email } = this.$route.query
-        const { data } = await AuthRepository.accountActivations(token, email)
+        const param = {
+          user: {
+            email
+          }
+        }
+        const { data } = await AuthRepository.accountActivations(token, param)
         this.$store.dispatch('login', { name: data.name, admin: data.admin })
         this.infoMessage = 'アカウントが有効になりました。'
       } catch (e) {
