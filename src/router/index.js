@@ -19,13 +19,18 @@ const routes = [
   },
   {
     path: '/accountactivations',
-    name: 'AccountActivations',
-    component: () => import('../views/AccountActivations.vue')
+    name: 'AccountActivationsEdit',
+    component: () => import('../views/AccountActivations/Edit.vue')
+  },
+  {
+    path: '/passwordresets/new',
+    name: 'PasswordResetsNew',
+    component: () => import('../views/PasswordResets/New.vue')
   },
   {
     path: '/passwordresets',
-    name: 'PasswordResets',
-    component: () => import('../views/PasswordResets.vue')
+    name: 'PasswordResetsEdit',
+    component: () => import('../views/PasswordResets/Edit.vue')
   },
   {
     path: '/users',

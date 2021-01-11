@@ -59,7 +59,7 @@ export default {
       }
     },
     passwordRestLink () {
-      this.$router.push('/passwordresets')
+      this.$router.push('/passwordresets/new')
     }
   }
 }
