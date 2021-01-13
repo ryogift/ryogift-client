@@ -1,18 +1,18 @@
 <template>
   <div class="password-resets-new">
     <div class="container max-width is-max-desktop">
-      <PasswordResetSection />
+      <PasswordResetNewSection />
     </div>
   </div>
 </template>
 
 <script>
-import PasswordResetSection from '@/components/organisms/PasswordResetSection.vue'
+import PasswordResetNewSection from '@/components/organisms/PasswordResetNewSection.vue'
 
 export default {
   name: 'PasswordResetsNew',
   components: {
-    PasswordResetSection
+    PasswordResetNewSection
   }
 }
 </script>

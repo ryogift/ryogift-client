@@ -3,8 +3,12 @@
     <section class="section m-1 border-frame">
       <h1 class="title">パスワードのリセット</h1>
       <form class="mt-1" @submit.prevent="handleSubmit">
-        <Input type="password" label="パスワード（6文字以上）" v-model:value="password" />
-        <Input type="password" label="パスワードの再確認" v-model:value="passwordConfirmation" />
+        <InputForm label="パスワード（6文字以上）" type="password"
+                   :hasError="password.hasError" :errorMessages="password.errorMessages"
+                   v-model:value="password.value" />
+        <InputForm label="パスワードの再確認" type="password"
+                   :hasError="passwordConfirmation.hasError" :errorMessages="passwordConfirmation.errorMessages"
+                   v-model:value="passwordConfirmation.value" />
         <SubmitButton class="mt-5 mb-4" label="パスワード更新" />
       </form>
       <InfoNotification v-if="infoMessage" :message="infoMessage" />
@@ -14,7 +18,7 @@
 </template>
 
 <script>
-import Input from '@/components/atoms/Input/Input.vue'
+import InputForm from '@/components/molecules/InputForm.vue'
 import SubmitButton from '@/components/molecules/SubmitButton.vue'
 import InfoNotification from '@/components/atoms/Notification/InfoNotification.vue'
 import ErrorNotification from '@/components/atoms/Notification/ErrorNotification.vue'
@@ -25,7 +29,7 @@ const AuthRepository = ReposiotryFactory.get('auth')
 export default {
   name: 'PasswordResetEditSection',
   components: {
-    Input,
+    InputForm,
     SubmitButton,
     InfoNotification,
     ErrorNotification
@@ -34,8 +38,16 @@ export default {
     return {
       token: '',
       email: '',
-      password: '',
-      passwordConfirmation: '',
+      password: {
+        value: '',
+        hasError: false,
+        errorMessages: []
+      },
+      passwordConfirmation: {
+        value: '',
+        hasError: false,
+        errorMessages: []
+      },
       infoMessage: '',
       errorMessage: ''
     }
@@ -50,26 +62,40 @@ export default {
       try {
         this.infoMessage = ''
         this.errorMessage = ''
+        this.password.hasError = false
+        this.password.errorMessages = []
+        this.passwordConfirmation.hasError = false
+        this.passwordConfirmation.errorMessages = []
         const param = {
           user: {
             email: this.email,
-            password: this.password,
-            passwordConfirmation: this.passwordConfirmation
+            password: this.password.value,
+            passwordConfirmation: this.passwordConfirmation.value
           }
         }
         await AuthRepository.passwordResetsUpdate(this.token, param)
         this.infoMessage = 'パスワードがリセットされました。'
       } catch (e) {
         const { status, data } = e.response
-        const expectedStatuses = [401, 403, 423]
-        if (expectedStatuses.includes(status)) {
+        const expectedStatuses = [422]
+        if (expectedStatuses.includes(status) && data.error !== undefined) {
           this.errorMessage = data.error.message
+        } else if (status === 422) {
+          const { password, passwordConfirmation } = data
+          if (password !== undefined) {
+            this.password.hasError = true
+            this.password.errorMessages = password
+          }
+          if (passwordConfirmation !== undefined) {
+            this.passwordConfirmation.hasError = true
+            this.passwordConfirmation.errorMessages = passwordConfirmation
+          }
         } else {
           this.errorMessage = '予期せぬエラーです。'
         }
       } finally {
-        this.password = ''
-        this.passwordConfirmation = ''
+        this.password.value = ''
+        this.passwordConfirmation.value = ''
       }
     }
   }
@@ -80,7 +106,7 @@ export default {
 .border-frame {
   border: 1px solid #c5c4c4;
   border-radius: 0.25rem;
-  height: 410px;
+  min-height: 410px;
 }
 .m {
   margin-top: 2rem;
