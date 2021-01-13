@@ -52,7 +52,9 @@ export default {
       this.email.errorMessages = []
       try {
         const param = {
-          email: this.email.value
+          user: {
+            email: this.email.value
+          }
         }
         await AuthRepository.passwordResetsCreate(param)
         this.infoMessage = 'パスワードのリセットについてのメールを送信しました。'
