@@ -45,7 +45,7 @@ export default {
         const param = { email: this.email, password: this.password }
         const { data } = await AuthRepository.login(param)
 
-        this.$store.dispatch('login', { name: data.name, admin: data.admin })
+        this.$store.dispatch('login', { id: data.id, name: data.name, admin: data.admin })
         this.$router.push('/')
       } catch (e) {
         const { status, data } = e.response

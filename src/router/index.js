@@ -33,6 +33,11 @@ const routes = [
     component: () => import('../views/PasswordResets/Edit.vue')
   },
   {
+    path: '/updatepassword',
+    name: 'UpdatePassword',
+    component: () => import('../views/UpdatePassword.vue')
+  },
+  {
     path: '/users',
     name: 'Users',
     component: () => import('../views/Users.vue')
