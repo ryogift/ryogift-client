@@ -15,5 +15,8 @@ export default {
   },
   passwordResetsUpdate (token, payload) {
     return Reposiotry.put(`/password_resets/${token}`, payload)
+  },
+  clientUser () {
+    return Reposiotry.get('/client_user')
   }
 }

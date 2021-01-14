@@ -39,7 +39,7 @@ export default {
           }
         }
         const { data } = await AuthRepository.accountActivations(token, param)
-        this.$store.dispatch('login', { name: data.name, admin: data.admin })
+        this.$store.dispatch('login', { id: data.id, name: data.name, admin: data.admin })
         this.infoMessage = 'アカウントが有効になりました。'
       } catch (e) {
         const { status, data } = e.response

@@ -16,5 +16,8 @@ export default {
   },
   unlock (id) {
     return Reposiotry.put(`${resource}/${id}/unlock`)
+  },
+  updatePassword (id, payload) {
+    return Reposiotry.put(`${resource}/${id}/update_password`, payload)
   }
 }
