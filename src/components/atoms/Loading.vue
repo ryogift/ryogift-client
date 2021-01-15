@@ -1,7 +1,5 @@
 <template>
-  <div class="loading">
-    <button class="button is-white is-loading" />
-  </div>
+  <button class="loading button is-white is-loading" />
 </template>
 
 <script>

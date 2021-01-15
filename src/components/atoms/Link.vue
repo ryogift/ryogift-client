@@ -1,6 +1,6 @@
 <template>
-  <a class="link">
-    <span @click="handleClick">{{ label }}</span>
+  <a class="link" @click="handleClick">
+    {{ label }}
   </a>
 </template>
 
