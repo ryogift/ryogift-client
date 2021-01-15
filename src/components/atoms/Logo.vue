@@ -1,5 +1,5 @@
 <template>
-  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1230 250" :width="width" :height="height">
+  <svg class="logo" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1230 250" :width="width" :height="height">
     <g fill="#008eb4">
       <path d="M0,0H118.8l32.1,19.8V123.9l-28.4,17.5,32.1,109.1H104.9L73.3,143.7H51.4V250.5H0ZM99.5,111.4V33L88.8,26.4H51.4V118H88.8Z"/>
       <path d="M241.9,250.5V168.4L179.8,0h55.1L267,122.9,299.1,0h55.1l-62,168.4v82.1Z"/>
