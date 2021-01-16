@@ -1,10 +1,10 @@
-import { shallowMount } from '@vue/test-utils'
+import { mount } from '@vue/test-utils'
 import PasswordInput from '@/components/atoms/Input/PasswordInput.vue'
 
 describe('PasswordInput.vue', () => {
   test('props.valueが設定されていること', () => {
     const value = 'test'
-    const wrapper = shallowMount(PasswordInput, {
+    const wrapper = mount(PasswordInput, {
       props: { value },
       global: {
         stubs: ['font-awesome-icon']
@@ -14,7 +14,7 @@ describe('PasswordInput.vue', () => {
   })
 
   test('valueが設定できること', async () => {
-    const wrapper = shallowMount(PasswordInput, {
+    const wrapper = mount(PasswordInput, {
       global: {
         stubs: ['font-awesome-icon']
       }
@@ -25,7 +25,7 @@ describe('PasswordInput.vue', () => {
   })
 
   test('valueをemitsイベントで出力できること', async () => {
-    const wrapper = shallowMount(PasswordInput, {
+    const wrapper = mount(PasswordInput, {
       global: {
         stubs: ['font-awesome-icon']
       }

@@ -1,10 +1,10 @@
-import { shallowMount } from '@vue/test-utils'
+import { mount } from '@vue/test-utils'
 import EmailInput from '@/components/atoms/Input/EmailInput.vue'
 
 describe('EmailInput.vue', () => {
   test('props.valueが設定されていること', () => {
     const value = 'test'
-    const wrapper = shallowMount(EmailInput, {
+    const wrapper = mount(EmailInput, {
       props: { value },
       global: {
         stubs: ['font-awesome-icon']
@@ -14,7 +14,7 @@ describe('EmailInput.vue', () => {
   })
 
   test('valueが設定できること', async () => {
-    const wrapper = shallowMount(EmailInput, {
+    const wrapper = mount(EmailInput, {
       global: {
         stubs: ['font-awesome-icon']
       }
@@ -25,7 +25,7 @@ describe('EmailInput.vue', () => {
   })
 
   test('valueをemitsイベントで出力できること', async () => {
-    const wrapper = shallowMount(EmailInput, {
+    const wrapper = mount(EmailInput, {
       global: {
         stubs: ['font-awesome-icon']
       }
