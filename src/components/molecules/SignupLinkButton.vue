@@ -1,7 +1,5 @@
 <template>
-  <div class="signup-link-button">
-    <PrimaryButton label="新規登録" @click="handleClick" />
-  </div>
+  <PrimaryButton class="signup-link-button" label="新規登録" @click="handleClick" />
 </template>
 
 <script>

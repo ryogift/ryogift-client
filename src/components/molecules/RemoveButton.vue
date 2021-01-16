@@ -1,7 +1,5 @@
 <template>
-  <div class="remove-button">
-    <DangerButton label="削除" />
-  </div>
+  <DangerButton class="remove-button" label="削除" />
 </template>
 
 <script>

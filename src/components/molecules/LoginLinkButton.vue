@@ -1,7 +1,5 @@
 <template>
-  <div class="login-link-button">
-    <WhiteButton label="ログイン" @click="handleClick" />
-  </div>
+  <WhiteButton class="login-link-button" label="ログイン" @click="handleClick" />
 </template>
 
 <script>

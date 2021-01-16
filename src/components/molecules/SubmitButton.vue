@@ -1,7 +1,5 @@
 <template>
-  <div class="submit-button">
-    <InfoButton class="w-100" :label="label" type="submit" />
-  </div>
+  <InfoButton class="submit-button w-100" :label="label" type="submit" />
 </template>
 
 <script>

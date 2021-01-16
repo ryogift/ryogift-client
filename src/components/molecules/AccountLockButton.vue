@@ -1,7 +1,5 @@
 <template>
-  <div class="account-lock-button">
-    <WarningButton label="アカウントロック" />
-  </div>
+  <WarningButton class="account-lock-button" label="アカウントロック" />
 </template>
 
 <script>

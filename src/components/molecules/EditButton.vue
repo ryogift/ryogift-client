@@ -1,7 +1,5 @@
 <template>
-  <div class="edit-button">
-    <Button label="編集" />
-  </div>
+  <Button class="edit-button" label="編集" />
 </template>
 
 <script>
