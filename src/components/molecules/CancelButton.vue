@@ -1,7 +1,5 @@
 <template>
-  <div class="cancel-button">
-    <Button label="キャンセル" />
-  </div>
+  <Button class="cancel-button" label="キャンセル" />
 </template>
 
 <script>

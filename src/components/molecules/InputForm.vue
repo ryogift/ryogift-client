@@ -7,8 +7,10 @@
                :class="{ 'is-danger': hasError }"
                @input="$emit('update:value', $event.target.value)">
       </div>
-      <ul v-for="errorMessage in errorMessages" :key="errorMessage">
-        <li class="help is-danger" v-if="hasError">{{ errorMessage }}</li>
+      <ul v-if="hasError">
+        <li class="help is-danger" v-for="errorMessage in errorMessages" :key="errorMessage">
+          {{ errorMessage }}
+        </li>
       </ul>
     </div>
   </div>

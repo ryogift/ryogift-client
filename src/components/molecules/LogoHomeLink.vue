@@ -1,7 +1,5 @@
 <template>
-  <div class="logo-home-link">
-    <Logo @click="handleClick" />
-  </div>
+  <Logo class="logo-home-link" @click="handleClick" />
 </template>
 
 <script>

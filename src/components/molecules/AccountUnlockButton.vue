@@ -1,7 +1,5 @@
 <template>
-  <div class="account-unlock-button">
-    <PrimaryButton label="アカウントロック解除" />
-  </div>
+  <PrimaryButton class="account-unlock-button" label="アカウントロック解除" />
 </template>
 
 <script>

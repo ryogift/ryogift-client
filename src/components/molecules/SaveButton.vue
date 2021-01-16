@@ -1,7 +1,5 @@
 <template>
-  <div class="save-button">
-    <SuccessButton label="保存" />
-  </div>
+  <SuccessButton class="save-button" label="保存" />
 </template>
 
 <script>
