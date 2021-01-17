@@ -10,9 +10,9 @@
 <script>
 import InfoNotification from '@/components/atoms/Notification/InfoNotification.vue'
 import ErrorNotification from '@/components/atoms/Notification/ErrorNotification.vue'
-import { ReposiotryFactory } from './../../api/RepositoryFactory'
+import RepositoryFactory from '@/api/RepositoryFactory'
 
-const AuthRepository = ReposiotryFactory.get('auth')
+const AuthRepository = RepositoryFactory.get('auth')
 
 export default {
   name: 'AccountActivationsEdit',

@@ -17,20 +17,20 @@
       <div id="navbarBasicExample" class="navbar-menu">
         <div class="navbar-start">
           <template v-if="isAdmin">
-            <Link class="navbar-item nav-link" label="ユーザー 一覧" @click="usersLink" />
+            <Link class="navbar-item nav-link users-link" label="ユーザー 一覧" @click="usersLink" />
           </template>
         </div>
 
         <div class="navbar-end" v-if="isNavEnd">
           <div class="navbar-item has-dropdown" v-if="isCurrentUser"
                :class="{ 'is-active': isRightMenu }">
-            <a class="navbar-link nav-link" @click="openRightMenu">
+            <a class="navbar-link nav-link current-user" @click="openRightMenu">
               {{ currentUserName }}
             </a>
             <div class="navbar-dropdown is-right right-dropdown" v-if="isRightMenu">
-              <Link class="navbar-item nav-link" label="パスワードの変更" @click="updatePasswordLink" />
+              <Link class="navbar-item nav-link password-link" label="パスワードの変更" @click="updatePasswordLink" />
               <hr class="navbar-divider">
-              <Link class="navbar-item nav-link" label="ログアウト" @click="logout" />
+              <Link class="navbar-item nav-link logout-link" label="ログアウト" @click="logout" />
             </div>
           </div>
           <div class="navbar-item" v-else>
@@ -48,9 +48,9 @@ import LogoHomeLink from '@/components/molecules/LogoHomeLink.vue'
 import LoginLinkButton from '@/components/molecules/LoginLinkButton.vue'
 import SignupLinkButton from '@/components/molecules/SignupLinkButton.vue'
 import Link from '@/components/atoms/Link.vue'
-import { ReposiotryFactory } from './../../api/RepositoryFactory'
+import RepositoryFactory from '@/api/RepositoryFactory'
 
-const AuthRepository = ReposiotryFactory.get('auth')
+const AuthRepository = RepositoryFactory.get('auth')
 
 export default {
   name: 'Header',

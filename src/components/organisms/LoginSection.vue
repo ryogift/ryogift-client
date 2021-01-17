@@ -18,10 +18,10 @@ import EmailInput from '@/components/atoms/Input/EmailInput.vue'
 import PasswordInput from '@/components/atoms/Input/PasswordInput.vue'
 import SubmitButton from '@/components/molecules/SubmitButton.vue'
 import ErrorNotification from '@/components/atoms/Notification/ErrorNotification.vue'
-import { ReposiotryFactory } from './../../api/RepositoryFactory'
+import RepositoryFactory from '@/api/RepositoryFactory'
 import Link from '@/components/atoms/Link.vue'
 
-const AuthRepository = ReposiotryFactory.get('auth')
+const AuthRepository = RepositoryFactory.get('auth')
 
 export default {
   name: 'LoginSection',
