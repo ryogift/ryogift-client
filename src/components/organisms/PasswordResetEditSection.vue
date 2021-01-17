@@ -3,10 +3,10 @@
     <section class="section m-1 border-frame">
       <h1 class="title">パスワードのリセット</h1>
       <form class="mt-1" @submit.prevent="handleSubmit">
-        <InputForm label="パスワード（6文字以上）" type="password"
+        <InputForm label="パスワード（6文字以上）" type="password" class="password"
                    :hasError="password.hasError" :errorMessages="password.errorMessages"
                    v-model:value="password.value" />
-        <InputForm label="パスワードの再確認" type="password"
+        <InputForm label="パスワードの再確認" type="password" class="password-confirmation"
                    :hasError="passwordConfirmation.hasError" :errorMessages="passwordConfirmation.errorMessages"
                    v-model:value="passwordConfirmation.value" />
         <SubmitButton class="mt-5 mb-4" label="パスワード更新" />
@@ -22,9 +22,9 @@ import InputForm from '@/components/molecules/InputForm.vue'
 import SubmitButton from '@/components/molecules/SubmitButton.vue'
 import InfoNotification from '@/components/atoms/Notification/InfoNotification.vue'
 import ErrorNotification from '@/components/atoms/Notification/ErrorNotification.vue'
-import { ReposiotryFactory } from './../../api/RepositoryFactory'
+import RepositoryFactory from '@/api/RepositoryFactory'
 
-const AuthRepository = ReposiotryFactory.get('auth')
+const AuthRepository = RepositoryFactory.get('auth')
 
 export default {
   name: 'PasswordResetEditSection',

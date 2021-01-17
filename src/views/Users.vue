@@ -12,9 +12,9 @@
 import UsersTable from '@/components/organisms/UsersTable.vue'
 import UserModal from '@/components/organisms/UserModal.vue'
 import Loading from '@/components/atoms/Loading.vue'
-import { ReposiotryFactory } from './../api/RepositoryFactory'
+import RepositoryFactory from '@/api/RepositoryFactory'
 
-const UsersRepository = ReposiotryFactory.get('users')
+const UsersRepository = RepositoryFactory.get('users')
 
 export default {
   name: 'Users',

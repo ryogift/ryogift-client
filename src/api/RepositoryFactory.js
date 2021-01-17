@@ -6,6 +6,6 @@ const repositories = {
   auth: AuthRepository
 }
 
-export const ReposiotryFactory = {
+export default {
   get: name => repositories[name]
 }

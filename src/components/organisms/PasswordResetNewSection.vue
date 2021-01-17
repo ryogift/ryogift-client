@@ -5,7 +5,7 @@
       <p>アカウントのメールアドレスをご入力ください。</p>
       <p>パスワードリセットのメールを送信します。</p>
       <form class="mt-1" @submit.prevent="handleSubmit">
-        <InputForm label="メールアドレス" type="email"
+        <InputForm label="メールアドレス" type="email" class="email"
                    :hasError="email.hasError" :errorMessages="email.errorMessages"
                    v-model:value="email.value" />
         <SubmitButton class="mt-5 mb-4" label="送信" />
@@ -21,9 +21,9 @@ import InputForm from '@/components/molecules/InputForm.vue'
 import SubmitButton from '@/components/molecules/SubmitButton.vue'
 import InfoNotification from '@/components/atoms/Notification/InfoNotification.vue'
 import ErrorNotification from '@/components/atoms/Notification/ErrorNotification.vue'
-import { ReposiotryFactory } from './../../api/RepositoryFactory'
+import RepositoryFactory from '@/api/RepositoryFactory'
 
-const AuthRepository = ReposiotryFactory.get('auth')
+const AuthRepository = RepositoryFactory.get('auth')
 
 export default {
   name: 'PasswordResetNewSection',

@@ -3,16 +3,16 @@
     <section class="section m-1 border-frame">
       <h1 class="title">アカウント登録</h1>
       <form @submit.prevent="handleSubmit">
-        <InputForm label="名前" type="text"
+        <InputForm label="名前" type="text" class="name"
                    :hasError="name.hasError" :errorMessages="name.errorMessages"
                    v-model:value="name.value" />
-        <InputForm label="メールアドレス" type="email"
+        <InputForm label="メールアドレス" type="email" class="email"
                    :hasError="email.hasError" :errorMessages="email.errorMessages"
                    v-model:value="email.value" />
-        <InputForm label="パスワード（6文字以上）" type="password"
+        <InputForm label="パスワード（6文字以上）" type="password" class="password"
                    :hasError="password.hasError" :errorMessages="password.errorMessages"
                    v-model:value="password.value" />
-        <InputForm label="パスワードの再確認" type="password"
+        <InputForm label="パスワードの再確認" type="password" class="password-confirmation"
                    :hasError="passwordConfirmation.hasError" :errorMessages="passwordConfirmation.errorMessages"
                    v-model:value="passwordConfirmation.value" />
         <SubmitButton class="mt-5 mb-4" label="アカウント登録" />
@@ -28,9 +28,9 @@ import InputForm from '@/components/molecules/InputForm.vue'
 import SubmitButton from '@/components/molecules/SubmitButton.vue'
 import InfoNotification from '@/components/atoms/Notification/InfoNotification.vue'
 import ErrorNotification from '@/components/atoms/Notification/ErrorNotification.vue'
-import { ReposiotryFactory } from './../../api/RepositoryFactory'
+import RepositoryFactory from '@/api/RepositoryFactory'
 
-const UsersRepository = ReposiotryFactory.get('users')
+const UsersRepository = RepositoryFactory.get('users')
 
 export default {
   name: 'SignupSection',
