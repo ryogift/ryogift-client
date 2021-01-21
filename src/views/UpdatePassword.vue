@@ -13,6 +13,9 @@ export default {
   name: 'UpdatePassword',
   components: {
     UpdatePasswordSection
+  },
+  mounted () {
+    document.title = 'パスワードの変更 | Ryo.gift'
   }
 }
 </script>

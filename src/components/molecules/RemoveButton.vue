@@ -1,14 +1,12 @@
 <template>
-  <DangerButton class="remove-button" label="削除" />
+  <button class="remove-button button is-danger">
+    <font-awesome-icon icon="trash-alt" />
+    <span class="ml-2">削除</span>
+  </button>
 </template>
 
 <script>
-import DangerButton from '@/components/atoms/Button/DangerButton.vue'
-
 export default {
-  name: 'RemoveButton',
-  components: {
-    DangerButton
-  }
+  name: 'RemoveButton'
 }
 </script>

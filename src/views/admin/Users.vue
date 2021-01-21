@@ -2,7 +2,11 @@
   <div class="users">
     <div class="container max-width is-max-desktop">
       <Loading v-if="isLoading" />
-      <UsersTable v-else :users="users" @edit="edit" />
+      <section class="section" v-else>
+        <div class="container">
+          <UsersTable :users="users" @edit="edit" />
+        </div>
+      </section>
     </div>
     <UserModal v-if="modal" :userId="userId" @close="closeModal" />
   </div>
@@ -33,6 +37,9 @@ export default {
   },
   created () {
     this.fetch()
+  },
+  mounted () {
+    document.title = 'ユーザー 一覧 | Ryo.gift'
   },
   methods: {
     edit (id) {

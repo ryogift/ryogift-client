@@ -8,6 +8,11 @@ export default createStore({
       admin: false
     }
   },
+  getters: {
+    isCurrentUser: state => {
+      return state.user.name !== ''
+    }
+  },
   mutations: {
     login (state, payload) {
       state.user.id = payload.id
