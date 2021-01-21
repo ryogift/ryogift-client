@@ -29,6 +29,9 @@ export default {
   created () {
     this.accountActivations()
   },
+  mounted () {
+    document.title = 'アカウントの有効化 | Ryo.gift'
+  },
   methods: {
     async accountActivations () {
       try {

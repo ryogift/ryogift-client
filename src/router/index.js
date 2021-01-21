@@ -20,17 +20,17 @@ const routes = [
   {
     path: '/accountactivations',
     name: 'AccountActivationsEdit',
-    component: () => import('../views/AccountActivations/Edit.vue')
+    component: () => import('../views/accountActivations/Edit.vue')
   },
   {
     path: '/passwordresets/new',
     name: 'PasswordResetsNew',
-    component: () => import('../views/PasswordResets/New.vue')
+    component: () => import('../views/passwordResets/New.vue')
   },
   {
     path: '/passwordresets',
     name: 'PasswordResetsEdit',
-    component: () => import('../views/PasswordResets/Edit.vue')
+    component: () => import('../views/passwordResets/Edit.vue')
   },
   {
     path: '/updatepassword',
@@ -38,9 +38,14 @@ const routes = [
     component: () => import('../views/UpdatePassword.vue')
   },
   {
+    path: '/userposts',
+    name: 'UserPosts',
+    component: () => import('../views/UserPosts.vue')
+  },
+  {
     path: '/users',
     name: 'Users',
-    component: () => import('../views/Users.vue')
+    component: () => import('../views/admin/Users.vue')
   }
 ]
 

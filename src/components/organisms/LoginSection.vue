@@ -69,7 +69,7 @@ export default {
 .border-frame {
   border: 1px solid #c5c4c4;
   border-radius: 0.25rem;
-  height: 380px;
+  height: 400px;
 }
 .m {
   margin-top: 2rem;

@@ -13,6 +13,9 @@ export default {
   name: 'Login',
   components: {
     LoginSection
+  },
+  mounted () {
+    document.title = 'ログイン | Ryo.gift'
   }
 }
 </script>

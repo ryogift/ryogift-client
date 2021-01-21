@@ -13,6 +13,9 @@ export default {
   name: 'PasswordResetsNew',
   components: {
     PasswordResetNewSection
+  },
+  mounted () {
+    document.title = 'パスワードのリセット | Ryo.gift'
   }
 }
 </script>

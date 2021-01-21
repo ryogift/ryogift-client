@@ -1,50 +1,76 @@
 <template>
   <div class="header">
-    <nav class="navbar" role="navigation" aria-label="main navigation">
+    <nav class="navbar" role="navigation" aria-label="main navigation" v-show="isHeader">
       <div class="navbar-brand h-60">
         <div class="navbar-item">
-          <LogoHomeLink />
+          <Logo @click="homeLink" />
         </div>
 
-        <a role="button" class="navbar-burger"
-           aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
-          <span aria-hidden="true"></span>
-          <span aria-hidden="true"></span>
-          <span aria-hidden="true"></span>
-        </a>
+        <template v-if="isCurrentUser">
+          <a role="button" class="navbar-burger"
+            aria-label="menu" aria-expanded="false" data-target="navbarBasicExample"
+            @click="toggleNavbarBurger"
+          >
+            <span aria-hidden="true" />
+            <span aria-hidden="true" />
+            <span aria-hidden="true" />
+          </a>
+        </template>
+        <template v-else>
+          <a role="button" class="navbar-burger w-auto"
+            aria-label="menu" aria-expanded="false"
+            v-if="!isCurrentUser"
+          >
+            <div class="navbar-item">
+              <LoginLinkButton class="mr-2" />
+              <SignupLinkButton class="mr-2" />
+            </div>
+          </a>
+        </template>
       </div>
 
-      <div id="navbarBasicExample" class="navbar-menu">
+      <div id="navbarBasicExample" class="navbar-menu" :class="{ 'is-active': isNavbarBurger }">
         <div class="navbar-start">
+          <template v-if="isCurrentUser">
+            <Link class="navbar-item nav-link home-link" label="ホーム" @click="homeLink" />
+            <Link class="navbar-item nav-link posts-link" label="投稿一覧" @click="userPostsLink" />
+          </template>
           <template v-if="isAdmin">
             <Link class="navbar-item nav-link users-link" label="ユーザー 一覧" @click="usersLink" />
           </template>
         </div>
 
-        <div class="navbar-end" v-if="isNavEnd">
-          <div class="navbar-item has-dropdown" v-if="isCurrentUser"
-               :class="{ 'is-active': isRightMenu }">
-            <a class="navbar-link nav-link current-user" @click="openRightMenu">
-              {{ currentUserName }}
-            </a>
-            <div class="navbar-dropdown is-right right-dropdown" v-if="isRightMenu">
-              <Link class="navbar-item nav-link password-link" label="パスワードの変更" @click="updatePasswordLink" />
-              <hr class="navbar-divider">
-              <Link class="navbar-item nav-link logout-link" label="ログアウト" @click="logout" />
+        <template v-if="isCurrentUser">
+          <div class="navbar-end">
+            <div class="navbar-item has-dropdown"
+                :class="{ 'is-active': isRightMenu }">
+              <a class="navbar-link nav-link current-user" @click="toggleRightMenu">
+                {{ currentUserName }}
+              </a>
+              <div class="navbar-dropdown is-right right-dropdown" v-if="isRightMenu">
+                <Link class="navbar-item nav-link password-link" label="パスワードの変更" @click="updatePasswordLink" />
+                <hr class="navbar-divider">
+                <Link class="navbar-item nav-link logout-link" label="ログアウト" @click="logout" />
+              </div>
             </div>
           </div>
-          <div class="navbar-item" v-else>
-            <LoginLinkButton class="mr-2" />
-            <SignupLinkButton class="mr-2" />
+        </template>
+        <template v-else>
+          <div class="navbar-end">
+            <div class="navbar-item">
+              <LoginLinkButton class="mr-2" />
+              <SignupLinkButton class="mr-2" />
+            </div>
           </div>
-        </div>
+        </template>
       </div>
     </nav>
+    <div class="header-background" @click="closeMenu" v-if="isRightMenu || isNavbarBurger"></div>
   </div>
 </template>
 
 <script>
-import LogoHomeLink from '@/components/molecules/LogoHomeLink.vue'
+import Logo from '@/components/atoms/Logo.vue'
 import LoginLinkButton from '@/components/molecules/LoginLinkButton.vue'
 import SignupLinkButton from '@/components/molecules/SignupLinkButton.vue'
 import Link from '@/components/atoms/Link.vue'
@@ -55,7 +81,7 @@ const AuthRepository = RepositoryFactory.get('auth')
 export default {
   name: 'Header',
   components: {
-    LogoHomeLink,
+    Logo,
     LoginLinkButton,
     SignupLinkButton,
     Link
@@ -63,19 +89,20 @@ export default {
   data () {
     return {
       isRightMenu: false,
-      isNavEnd: false
+      isNavbarBurger: false,
+      isHeader: false
     }
   },
   created () {
     if (document.cookie !== '') {
       this.currentUser()
     } else {
-      this.isNavEnd = true
+      this.isHeader = true
     }
   },
   computed: {
     isCurrentUser () {
-      return this.$store.state.user.name !== ''
+      return this.$store.getters.isCurrentUser
     },
     isAdmin () {
       return this.$store.state.user.admin
@@ -85,27 +112,43 @@ export default {
     }
   },
   methods: {
+    async currentUser () {
+      this.isHeader = false
+      const { data } = await AuthRepository.clientUser()
+      this.$store.dispatch('login', { id: data.id, name: data.name, admin: data.admin })
+      this.isHeader = true
+    },
     async logout () {
-      this.isRightMenu = false
+      this.closeMenu()
       await AuthRepository.logout()
       this.$store.dispatch('logout')
       this.$router.push('/')
     },
     usersLink () {
+      this.closeMenu()
       this.$router.push('/users')
     },
+    homeLink () {
+      this.closeMenu()
+      this.$router.push('/')
+    },
+    userPostsLink () {
+      this.closeMenu()
+      this.$router.push('/userposts')
+    },
     updatePasswordLink () {
-      this.isRightMenu = false
+      this.closeMenu()
       this.$router.push('/updatepassword')
     },
-    openRightMenu () {
+    toggleRightMenu () {
       this.isRightMenu = !this.isRightMenu
     },
-    async currentUser () {
-      this.isNavEnd = false
-      const { data } = await AuthRepository.clientUser()
-      this.$store.dispatch('login', { id: data.id, name: data.name, admin: data.admin })
-      this.isNavEnd = true
+    toggleNavbarBurger () {
+      this.isNavbarBurger = !this.isNavbarBurger
+    },
+    closeMenu () {
+      this.isRightMenu = false
+      this.isNavbarBurger = false
     }
   }
 }
@@ -128,5 +171,24 @@ export default {
 .right-dropdown {
   border-top: none;
   box-shadow: 0px 2px 8px 0px rgba(10, 10, 10, 0.1);
+  z-index: 11;
+}
+.w-auto {
+  width: auto;
+}
+.navbar-burger:hover {
+  background-color: white !important;
+}
+.navbar {
+  z-index: 11;
+}
+.header-background {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 10;
+  background-color: rgb(156 156 156 / 29%);
 }
 </style>

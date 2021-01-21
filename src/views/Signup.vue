@@ -13,6 +13,9 @@ export default {
   name: 'Signup',
   components: {
     SignupSection
+  },
+  mounted () {
+    document.title = '新規登録 | Ryo.gift'
   }
 }
 </script>

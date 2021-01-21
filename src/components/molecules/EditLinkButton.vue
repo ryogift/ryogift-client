@@ -1,5 +1,5 @@
 <template>
-  <button class="edit-button button">
+  <button class="edit-link-button button is-white">
     <font-awesome-icon icon="edit" />
     <span class="ml-2">編集</span>
   </button>
@@ -7,6 +7,6 @@
 
 <script>
 export default {
-  name: 'EditButton'
+  name: 'EditLinkButton'
 }
 </script>
