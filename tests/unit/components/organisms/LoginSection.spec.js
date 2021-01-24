@@ -10,18 +10,14 @@ jest.mock('@/api/AuthRepository', () => ({
 describe('LoginSection.vue', () => {
   test('h1タグのタイトルが表示されること', () => {
     const wrapper = mount(LoginSection, {
-      global: {
-        stubs: ['font-awesome-icon']
-      }
+      global: { stubs: ['font-awesome-icon'] }
     })
     expect(wrapper.get('.title').text()).toEqual('ログイン')
   })
 
   test('メールアドレスが入力できること', async () => {
     const wrapper = mount(LoginSection, {
-      global: {
-        stubs: ['font-awesome-icon']
-      }
+      global: { stubs: ['font-awesome-icon'] }
     })
     const emailInput = wrapper.get('.email-input input')
     await emailInput.setValue('test@example.com')
@@ -30,9 +26,7 @@ describe('LoginSection.vue', () => {
 
   test('パスワードが入力できること', async () => {
     const wrapper = mount(LoginSection, {
-      global: {
-        stubs: ['font-awesome-icon']
-      }
+      global: { stubs: ['font-awesome-icon'] }
     })
     const passwordInput = wrapper.get('.password-input input')
     await passwordInput.setValue('password')
@@ -63,12 +57,10 @@ describe('LoginSection.vue', () => {
     const wrapper = mount(LoginSection, {
       global: {
         stubs: ['font-awesome-icon'],
-        mocks: {
-          $router: mockRouter
-        }
+        mocks: { $router: mockRouter }
       }
     })
-    await wrapper.get('.password-reset').trigger('link')
+    await wrapper.get('.password-reset').trigger('click')
     expect(mockRouter.push).toHaveBeenCalledWith('/passwordresets/new')
   })
 })

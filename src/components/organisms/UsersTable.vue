@@ -24,7 +24,7 @@
 </template>
 
 <script>
-import EditButton from '@/components/molecules/EditButton.vue'
+import EditButton from '@/components/atoms/Button/EditButton.vue'
 
 export default {
   name: 'UsersTable',

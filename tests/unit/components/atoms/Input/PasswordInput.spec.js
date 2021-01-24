@@ -6,18 +6,14 @@ describe('PasswordInput.vue', () => {
     const value = 'test'
     const wrapper = mount(PasswordInput, {
       props: { value },
-      global: {
-        stubs: ['font-awesome-icon']
-      }
+      global: { stubs: ['font-awesome-icon'] }
     })
     expect(wrapper.vm.value).toMatch(value)
   })
 
   test('valueが設定できること', async () => {
     const wrapper = mount(PasswordInput, {
-      global: {
-        stubs: ['font-awesome-icon']
-      }
+      global: { stubs: ['font-awesome-icon'] }
     })
     const input = wrapper.find('input')
     await input.setValue('test')
@@ -26,9 +22,7 @@ describe('PasswordInput.vue', () => {
 
   test('valueをemitsイベントで出力できること', async () => {
     const wrapper = mount(PasswordInput, {
-      global: {
-        stubs: ['font-awesome-icon']
-      }
+      global: { stubs: ['font-awesome-icon'] }
     })
     const input = wrapper.find('input')
     await input.setValue('test')

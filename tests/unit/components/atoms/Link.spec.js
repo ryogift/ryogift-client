@@ -10,10 +10,4 @@ describe('Link.vue', () => {
     const link = wrapper.get('.link')
     expect(link.text()).toMatch(label)
   })
-
-  test('クリック時にemitsイベントが実行されること', async () => {
-    const wrapper = mount(Link, {})
-    wrapper.get('.link').trigger('click')
-    expect(wrapper.emitted()).toHaveProperty('link')
-  })
 })

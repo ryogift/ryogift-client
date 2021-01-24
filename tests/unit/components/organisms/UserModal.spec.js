@@ -4,10 +4,12 @@ import UserModal from '@/components/organisms/UserModal.vue'
 
 jest.mock('@/api/UsersRepository', () => ({
   getUser: jest.fn(() => {
-    return { data: {
-      id: 1, name: 'test', email: 'test@example.com', displayState: 'アクティブ', displayRole: '一般',
-      displayCreatedAt: '2021/01/15 10:00:10', displayActivatedAt: '2021/01/17 07:38:10', displayLockedAt: ''
-    } }
+    return {
+      data: {
+        id: 1, name: 'test', email: 'test@example.com', displayState: 'アクティブ', displayRole: '一般',
+        displayCreatedAt: '2021/01/15 10:00:10', displayActivatedAt: '2021/01/17 07:38:10', displayLockedAt: ''
+      }
+    }
   })
 }))
 

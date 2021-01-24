@@ -1,7 +1,6 @@
 <template>
   <div class="home">
     <div class="container is-max-desktop">
-      <Loading class="m-5" v-if="isLoading" />
       <div class="m-5">
         <div class="hero mt-5 mb-5 post" v-for="post in posts" :key="post.id">
           <div class="m-5">
@@ -18,22 +17,15 @@
 </template>
 
 <script>
-import Loading from '@/components/atoms/Loading.vue'
 import RepositoryFactory from '@/api/RepositoryFactory'
 
 const PostsRepository = RepositoryFactory.get('posts')
 
 export default {
   name: 'Home',
-  components: {
-    Loading
-  },
   data () {
     return {
-      isLoading: true,
-      posts: [],
-      id: 0,
-      modal: false
+      posts: []
     }
   },
   created () {
@@ -44,10 +36,8 @@ export default {
   },
   methods: {
     async fetch () {
-      this.isLoading = true
       const { data } = await PostsRepository.index()
       this.posts = data
-      this.isLoading = false
     }
   }
 }

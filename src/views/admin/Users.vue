@@ -1,8 +1,7 @@
 <template>
   <div class="users">
     <div class="container max-width is-max-desktop">
-      <Loading v-if="isLoading" />
-      <section class="section" v-else>
+      <section class="section">
         <div class="container">
           <UsersTable :users="users" @edit="edit" />
         </div>
@@ -15,7 +14,6 @@
 <script>
 import UsersTable from '@/components/organisms/UsersTable.vue'
 import UserModal from '@/components/organisms/UserModal.vue'
-import Loading from '@/components/atoms/Loading.vue'
 import RepositoryFactory from '@/api/RepositoryFactory'
 
 const UsersRepository = RepositoryFactory.get('users')
@@ -24,12 +22,10 @@ export default {
   name: 'Users',
   components: {
     UsersTable,
-    UserModal,
-    Loading
+    UserModal
   },
   data () {
     return {
-      isLoading: true,
       users: [],
       userId: 0,
       modal: false
@@ -50,10 +46,8 @@ export default {
       this.modal = false
     },
     async fetch () {
-      this.isLoading = true
       const { data } = await UsersRepository.get()
       this.users = data
-      this.isLoading = false
     }
   }
 }

@@ -1,5 +1,5 @@
 <template>
-  <WhiteButton class="login-link-button" label="ログイン" @click="handleClick" />
+  <WhiteButton class="login-link-button" label="ログイン" />
 </template>
 
 <script>
@@ -9,11 +9,6 @@ export default {
   name: 'LoginLinkButton',
   components: {
     WhiteButton
-  },
-  methods: {
-    handleClick () {
-      this.$router.push('/login')
-    }
   }
 }
 </script>

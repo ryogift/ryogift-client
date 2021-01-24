@@ -7,7 +7,7 @@
         <PasswordInput class="field" v-model:value="password" />
         <SubmitButton class="mt-5 mb-4" label="ログイン" />
       </form>
-      <Link class="password-reset" label="パスワードを忘れた場合" @link="passwordRestLink" />
+      <Link class="password-reset" label="パスワードを忘れた場合" @click="passwordRestLink" />
       <ErrorNotification class="mt-2" v-if="errorMessage" :message="errorMessage" />
     </section>
   </div>
