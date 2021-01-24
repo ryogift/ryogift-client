@@ -9,9 +9,7 @@ export default createStore({
     }
   },
   getters: {
-    isCurrentUser: state => {
-      return state.user.name !== ''
-    }
+    isCurrentUser: state => state.user.name !== ''
   },
   mutations: {
     login (state, payload) {

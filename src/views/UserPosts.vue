@@ -1,8 +1,7 @@
 <template>
   <div class="user-posts">
     <div class="container is-max-desktop" v-if="isCurrentUser">
-      <Loading class="m-5" v-if="isLoading" />
-      <div class="m-5" v-else>
+      <div class="m-5">
         <div class="text-right mt-5">
           <CreateButton @click="openNewModal" />
         </div>
@@ -23,18 +22,15 @@
         <PostModal v-if="postModal"
                    :title="modalTitle" :type="type" :id="id"
                    @close="closePostModal" />
-        <RemoveModal v-if="removeModal"
-                     :id="id"
-                     @close="closeRemoveModal" @remove="handleRemove" />
+        <RemoveModal v-if="removeModal" @close="closeRemoveModal" @remove="handleRemove" />
       </div>
     </div>
-    <div class="dropdown-background" @click="closeAllDropDown" v-if="isDropDown"></div>
+    <div class="dropdown-background" @click="closeAllDropDown" v-if="isDropDown" />
   </div>
 </template>
 
 <script>
-import Loading from '@/components/atoms/Loading.vue'
-import CreateButton from '@/components/molecules/CreateButton.vue'
+import CreateButton from '@/components/atoms/Button/CreateButton.vue'
 import EllipsisDropDown from '@/components/molecules/EllipsisDropDown.vue'
 import PostModal from '@/components/organisms/PostModal.vue'
 import RemoveModal from '@/components/organisms/RemoveModal.vue'
@@ -45,7 +41,6 @@ const UserPostsRepository = RepositoryFactory.get('userPosts')
 export default {
   name: 'UserPosts',
   components: {
-    Loading,
     CreateButton,
     EllipsisDropDown,
     PostModal,
@@ -53,7 +48,6 @@ export default {
   },
   data () {
     return {
-      isLoading: true,
       posts: [],
       postModal: false,
       removeModal: false,
@@ -77,11 +71,9 @@ export default {
   },
   methods: {
     async fetch () {
-      this.isLoading = true
       const { data } = await UserPostsRepository.index()
       data.forEach(item => { item.isDropDown = false })
       this.posts = data
-      this.isLoading = false
     },
     async handleRemove () {
       await UserPostsRepository.destroy(this.id)
@@ -129,9 +121,6 @@ export default {
 </script>
 
 <style scoped>
-h1 {
-  margin: 40px;
-}
 .text-right {
   text-align: right;
 }

@@ -17,13 +17,10 @@
           </a>
         </template>
         <template v-else>
-          <a role="button" class="navbar-burger w-auto"
-            aria-label="menu" aria-expanded="false"
-            v-if="!isCurrentUser"
-          >
+          <a role="button" class="navbar-burger w-auto" aria-label="menu" aria-expanded="false">
             <div class="navbar-item">
-              <LoginLinkButton class="mr-2" />
-              <SignupLinkButton class="mr-2" />
+              <LoginLinkButton class="mr-2" @click="loginLink" />
+              <SignupLinkButton class="mr-2" @click="signupLink" />
             </div>
           </a>
         </template>
@@ -58,8 +55,8 @@
         <template v-else>
           <div class="navbar-end">
             <div class="navbar-item">
-              <LoginLinkButton class="mr-2" />
-              <SignupLinkButton class="mr-2" />
+              <LoginLinkButton class="mr-2" @click="loginLink" />
+              <SignupLinkButton class="mr-2" @click="signupLink" />
             </div>
           </div>
         </template>
@@ -139,6 +136,12 @@ export default {
     updatePasswordLink () {
       this.closeMenu()
       this.$router.push('/updatepassword')
+    },
+    loginLink () {
+      this.$router.push('/login')
+    },
+    signupLink () {
+      this.$router.push('/signup')
     },
     toggleRightMenu () {
       this.isRightMenu = !this.isRightMenu

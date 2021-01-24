@@ -13,9 +13,9 @@
 </template>
 
 <script>
-import EllipsisButton from '@/components/molecules/EllipsisButton.vue'
-import EditLinkButton from '@/components/molecules/EditLinkButton.vue'
-import RemoveLinkButton from '@/components/molecules/RemoveLinkButton.vue'
+import EllipsisButton from '@/components/atoms/Button/EllipsisButton.vue'
+import EditLinkButton from '@/components/atoms/Button/EditLinkButton.vue'
+import RemoveLinkButton from '@/components/atoms/Button/RemoveLinkButton.vue'
 
 export default {
   name: 'EllipsisDropDown',

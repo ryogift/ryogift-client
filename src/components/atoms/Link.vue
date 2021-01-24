@@ -1,5 +1,5 @@
 <template>
-  <a class="link" @click="handleClick">
+  <a class="link">
     {{ label }}
   </a>
 </template>
@@ -9,11 +9,6 @@ export default {
   name: 'Link',
   props: {
     label: String
-  },
-  methods: {
-    handleClick () {
-      this.$emit('link')
-    }
   }
 }
 </script>

@@ -11,8 +11,8 @@
           <p>削除しますか？</p>
         </section>
         <footer class="modal-card-foot right">
-          <CancelButton class="cancel" @click="close" />
-          <RemoveButton class="remove" @click="remove" />
+          <CancelButton @click="close" />
+          <RemoveButton @click="remove" />
         </footer>
       </div>
     </div>
@@ -21,16 +21,13 @@
 
 <script>
 import CancelButton from '@/components/molecules/CancelButton.vue'
-import RemoveButton from '@/components/molecules/RemoveButton.vue'
+import RemoveButton from '@/components/atoms/Button/RemoveButton.vue'
 
 export default {
   name: 'RemoveModal',
   components: {
     CancelButton,
     RemoveButton
-  },
-  props: {
-    id: Number
   },
   methods: {
     close () {
@@ -57,7 +54,6 @@ export default {
   margin-top: 80px;
   box-shadow: 0 0.5em 1em -0.125em rgba(10, 10, 10, 0.1), 0 0px 0 1px rgba(10, 10, 10, 0.02);
   border-radius: 4px;
-  border: 1px solid #dbdbdb;
 }
 .modal-background {
   background-color: rgb(156 156 156 / 29%)

@@ -28,17 +28,11 @@ describe('UpdatePasswordSection.vue', () => {
 
   test('フォームを送信できること', async () => {
     const $store = {
-      state: {
-        user: {
-          id: 1
-        }
-      }
+      state: { user: { id: 1 } }
     }
     const wrapper = mount(UpdatePasswordSection, {
       global: {
-        mocks: {
-          $store
-        }
+        mocks: { $store }
       }
     })
     await wrapper.get('.submit-button').trigger('submit.prevent')

@@ -17,9 +17,7 @@ describe('PasswordResetEditSection.vue', () => {
   test('h1タグのタイトルが表示されること', () => {
     const wrapper = mount(PasswordResetEditSection, {
       global: {
-        mocks: {
-          $route: mockRoute
-        }
+        mocks: { $route: mockRoute }
       }
     })
     expect(wrapper.get('.title').text()).toBe('パスワードのリセット')
@@ -28,9 +26,7 @@ describe('PasswordResetEditSection.vue', () => {
   test('パスワード（6文字以上）が入力できること', async () => {
     const wrapper = mount(PasswordResetEditSection, {
       global: {
-        mocks: {
-          $route: mockRoute
-        }
+        mocks: { $route: mockRoute }
       }
     })
     const passwordInput = wrapper.get('.password')
@@ -41,9 +37,7 @@ describe('PasswordResetEditSection.vue', () => {
   test('パスワードの再確認が入力できること', async () => {
     const wrapper = mount(PasswordResetEditSection, {
       global: {
-        mocks: {
-          $route: mockRoute
-        }
+        mocks: { $route: mockRoute }
       }
     })
     const passwordConfirmationInput = wrapper.get('.password-confirmation')
@@ -54,9 +48,7 @@ describe('PasswordResetEditSection.vue', () => {
   test('フォームを送信できること', async () => {
     const wrapper = mount(PasswordResetEditSection, {
       global: {
-        mocks: {
-          $route: mockRoute
-        }
+        mocks: { $route: mockRoute }
       }
     })
     await wrapper.get('.submit-button').trigger('submit.prevent')

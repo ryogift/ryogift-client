@@ -1,12 +1,12 @@
 <template>
   <div class="post-modal">
     <div class="modal show pr-5">
-      <div class="modal-background" @click="close($event)"></div>
+      <div class="modal-background" @click="close($event)" />
       <form @submit.prevent="handleSubmit">
         <div class="modal-card">
           <header class="modal-card-head">
             <p class="modal-card-title mb-0">{{ title }}</p>
-            <button class="delete" aria-label="close" @click="close($event)"></button>
+            <button class="delete" aria-label="close" @click="close($event)" />
           </header>
           <section class="modal-card-body">
             <div class="columns">
@@ -18,7 +18,7 @@
             </div>
           </section>
           <footer class="modal-card-foot">
-            <SubmitButton class="" label="投稿" />
+            <SubmitButton label="投稿" />
           </footer>
         </div>
       </form>
@@ -108,14 +108,10 @@ export default {
   display: block;
   text-align: left;
 }
-.cancel {
-  margin-right: 8px;
-}
 .modal-card {
   margin-top: 80px;
   box-shadow: 0 0.5em 1em -0.125em rgba(10, 10, 10, 0.1), 0 0px 0 1px rgba(10, 10, 10, 0.02);
   border-radius: 4px;
-  border: 1px solid #dbdbdb;
 }
 .modal-background {
   background-color: rgb(156 156 156 / 29%)

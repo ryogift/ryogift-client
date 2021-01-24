@@ -1,5 +1,5 @@
 <template>
-  <PrimaryButton class="signup-link-button" label="新規登録" @click="handleClick" />
+  <PrimaryButton class="signup-link-button" label="新規登録" />
 </template>
 
 <script>
@@ -9,11 +9,6 @@ export default {
   name: 'SignupLinkButton',
   components: {
     PrimaryButton
-  },
-  methods: {
-    handleClick () {
-      this.$router.push('/signup')
-    }
   }
 }
 </script>

@@ -7,19 +7,20 @@
                :class="{ 'is-danger': hasError }"
                @input="$emit('update:value', $event.target.value)">
       </div>
-      <ul v-if="hasError">
-        <li class="help is-danger" v-for="errorMessage in errorMessages" :key="errorMessage">
-          {{ errorMessage }}
-        </li>
-      </ul>
+      <ErrorMessages v-if="hasError" :errorMessages="errorMessages" />
     </div>
   </div>
 </template>
 
 <script>
+import ErrorMessages from '@/components/atoms/ErrorMessages.vue'
+
 export default {
   name: 'InputForm',
   inheritAttrs: false,
+  components: {
+    ErrorMessages
+  },
   props: {
     label: String,
     value: String,
