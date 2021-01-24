@@ -1,6 +1,6 @@
 <template>
   <div class="home">
-    <div class="container is-max-desktop">
+    <div class="container is-max-desktop" v-if="isCurrentUser">
       <div class="m-5">
         <div class="hero mt-5 mb-5 post" v-for="post in posts" :key="post.id">
           <div class="m-5">
@@ -12,6 +12,16 @@
           </div>
         </div>
       </div>
+    </div>
+    <div v-else class="container is-max-desktop">
+      <section class="section center">
+        <h1>ホーム(全ユーザーの投稿一覧)</h1>
+        <img src="@/assets/home.png" width="600" border="1" />
+      </section>
+      <section class="section center">
+        <h1>投稿一覧(ユーザーごとの投稿一覧)</h1>
+        <img src="@/assets/posts.png" width="600" border="1" />
+      </section>
     </div>
   </div>
 </template>
@@ -31,6 +41,11 @@ export default {
   },
   mounted () {
     document.title = 'ホーム | Ryo.gift'
+  },
+  computed: {
+    isCurrentUser () {
+      return this.$store.getters.isCurrentUser
+    }
   },
   methods: {
     async fetch () {
@@ -59,5 +74,8 @@ export default {
 }
 .post-content {
   white-space: pre-wrap;
+}
+.center {
+  text-align: center;
 }
 </style>
