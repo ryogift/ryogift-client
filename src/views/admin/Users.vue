@@ -14,9 +14,7 @@
 <script>
 import UsersTable from '@/components/organisms/UsersTable.vue'
 import UserModal from '@/components/organisms/UserModal.vue'
-import RepositoryFactory from '@/api/RepositoryFactory'
-
-const UsersRepository = RepositoryFactory.get('users')
+import UsersRepository from '@/api/UsersRepository'
 
 export default {
   name: 'Users',

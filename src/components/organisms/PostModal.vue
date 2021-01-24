@@ -29,9 +29,7 @@
 <script>
 import TextareaForm from '@/components/molecules/TextareaForm.vue'
 import SubmitButton from '@/components/molecules/SubmitButton.vue'
-import RepositoryFactory from '@/api/RepositoryFactory'
-
-const UserPostsRepository = RepositoryFactory.get('userPosts')
+import UserPostsRepository from '@/api/UserPostsRepository'
 
 export default {
   name: 'PostModal',

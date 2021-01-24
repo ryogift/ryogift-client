@@ -18,10 +18,8 @@ import EmailInput from '@/components/atoms/Input/EmailInput.vue'
 import PasswordInput from '@/components/atoms/Input/PasswordInput.vue'
 import SubmitButton from '@/components/molecules/SubmitButton.vue'
 import ErrorNotification from '@/components/atoms/Notification/ErrorNotification.vue'
-import RepositoryFactory from '@/api/RepositoryFactory'
+import AuthRepository from '@/api/AuthRepository'
 import Link from '@/components/atoms/Link.vue'
-
-const AuthRepository = RepositoryFactory.get('auth')
 
 export default {
   name: 'LoginSection',
@@ -48,14 +46,16 @@ export default {
         this.$store.dispatch('login', { id: data.id, name: data.name, admin: data.admin })
         this.$router.push('/')
       } catch (e) {
-        const { status, data } = e.response
-        this.password = ''
-        const expectedStatuses = [401, 403, 423]
-        if (expectedStatuses.includes(status)) {
-          this.errorMessage = data.error.message
-        } else {
-          this.errorMessage = '予期せぬエラーです。'
+        this.errorMessage = '予期せぬエラーです。'
+        if (e.response) {
+          const { status, data } = e.response
+          const expectedStatuses = [401, 403, 423]
+          if (expectedStatuses.includes(status)) {
+            this.errorMessage = data.error.message
+          }
         }
+      } finally {
+        this.password = ''
       }
     },
     passwordRestLink () {

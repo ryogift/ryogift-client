@@ -55,9 +55,7 @@
 import AccountLockButton from '@/components/molecules/AccountLockButton.vue'
 import AccountUnlockButton from '@/components/molecules/AccountUnlockButton.vue'
 import CancelButton from '@/components/molecules/CancelButton.vue'
-import RepositoryFactory from '@/api/RepositoryFactory'
-
-const UsersRepository = RepositoryFactory.get('users')
+import UsersRepository from '@/api/UsersRepository'
 
 export default {
   name: 'UserModal',
