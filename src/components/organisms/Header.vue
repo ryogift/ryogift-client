@@ -30,7 +30,7 @@
         <div class="navbar-start">
           <template v-if="isCurrentUser">
             <Link class="navbar-item nav-link home-link" label="ホーム" @click="homeLink" />
-            <Link class="navbar-item nav-link posts-link" label="投稿一覧" @click="userPostsLink" />
+            <Link class="navbar-item nav-link userposts-link" label="投稿一覧" @click="userPostsLink" />
           </template>
           <template v-if="isAdmin">
             <Link class="navbar-item nav-link users-link" label="ユーザー 一覧" @click="usersLink" />
