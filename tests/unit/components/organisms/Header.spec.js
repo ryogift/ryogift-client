@@ -21,6 +21,36 @@ describe('Header.vue', () => {
     expect(wrapper.get('.logo').exists()).toBe(true)
   })
 
+  test('ホームリンクをクリック時に"/"に遷移すること', async () => {
+    const $store = {
+      state: { user: { name: 'test', admin: true } },
+      getters: { isCurrentUser: state => state.user.name !== '' }
+    }
+    const mockRouter = { push: jest.fn() }
+    const wrapper = mount(Header, {
+      global: {
+        mocks: { $store, $router: mockRouter }
+      }
+    })
+    await wrapper.get('.home-link').trigger('click')
+    expect(mockRouter.push).toHaveBeenCalledWith('/')
+  })
+
+  test('ユーザーの投稿一覧リンクをクリック時に"/"に遷移すること', async () => {
+    const $store = {
+      state: { user: { name: 'test', admin: true } },
+      getters: { isCurrentUser: state => state.user.name !== '' }
+    }
+    const mockRouter = { push: jest.fn() }
+    const wrapper = mount(Header, {
+      global: {
+        mocks: { $store, $router: mockRouter }
+      }
+    })
+    await wrapper.get('.userposts-link').trigger('click')
+    expect(mockRouter.push).toHaveBeenCalledWith('/userposts')
+  })
+
   describe('管理者の場合', () => {
     const $store = {
       state: { user: { name: 'test', admin: true } },
@@ -126,6 +156,26 @@ describe('Header.vue', () => {
     expect(wrapper.get('.login-link-button').text()).toBe('ログイン')
   })
 
+  test('ログインリンクボタンをクリック時に"/login"に遷移すること', async () => {
+    const store = createStore({
+      state() {
+        return {
+          user: { id: 0, name: '', admin: false }
+        }
+      }
+    })
+    const mockRouter = { push: jest.fn() }
+    const wrapper = mount(Header, {
+      global: {
+        plugins: [store],
+        mocks: { $router: mockRouter }
+      }
+    })
+    await wrapper.setData({ isNavEnd: true })
+    await wrapper.get('.login-link-button').trigger('click')
+    expect(mockRouter.push).toHaveBeenCalledWith('/login')
+  })
+
   test('新規登録ボタンが表示されること', async () => {
     const store = createStore({
       state() {
@@ -139,5 +189,40 @@ describe('Header.vue', () => {
     })
     await wrapper.setData({ isNavEnd: true })
     expect(wrapper.get('.signup-link-button').text()).toBe('新規登録')
+  })
+
+  test('新規登録ボタンをクリック時に"/signup"に遷移すること', async () => {
+    const store = createStore({
+      state() {
+        return {
+          user: { id: 0, name: '', admin: false }
+        }
+      }
+    })
+    const mockRouter = { push: jest.fn() }
+    const wrapper = mount(Header, {
+      global: {
+        plugins: [store],
+        mocks: { $router: mockRouter }
+      }
+    })
+    await wrapper.setData({ isNavEnd: true })
+    await wrapper.get('.signup-link-button').trigger('click')
+    expect(mockRouter.push).toHaveBeenCalledWith('/signup')
+  })
+
+  test('ハンバーガーメニュークリック時にisNavbarBurgerがtrueになること', async () => {
+    const $store = {
+      state: { user: { name: 'test', admin: true } },
+      getters: { isCurrentUser: state => state.user.name !== '' }
+    }
+    const mockRouter = { push: jest.fn() }
+    const wrapper = mount(Header, {
+      global: {
+        mocks: { $store, $router: mockRouter }
+      }
+    })
+    await wrapper.get('.navbar-burger').trigger('click')
+    expect(wrapper.vm.isNavbarBurger).toBe(true)
   })
 })
