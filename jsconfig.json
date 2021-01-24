@@ -1,5 +1,13 @@
 {
-  "include": [
-    "./src/**/*"
-  ]
+  "include": ["./src/**/*"],
+  "compilerOptions": {
+    "module": "es2020",
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["src/*"]
+    }
+  },
+  "typeAcquisition": {
+    "exclude": ["dotenv"]
+  }
 }
