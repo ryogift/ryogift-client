@@ -28,9 +28,7 @@ import InputForm from '@/components/molecules/InputForm.vue'
 import SubmitButton from '@/components/molecules/SubmitButton.vue'
 import InfoNotification from '@/components/atoms/Notification/InfoNotification.vue'
 import ErrorNotification from '@/components/atoms/Notification/ErrorNotification.vue'
-import RepositoryFactory from '@/api/RepositoryFactory'
-
-const UsersRepository = RepositoryFactory.get('users')
+import UsersRepository from '@/api/UsersRepository'
 
 export default {
   name: 'SignupSection',

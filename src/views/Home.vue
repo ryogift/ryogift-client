@@ -17,9 +17,7 @@
 </template>
 
 <script>
-import RepositoryFactory from '@/api/RepositoryFactory'
-
-const PostsRepository = RepositoryFactory.get('posts')
+import PostsRepository from '@/api/PostsRepository'
 
 export default {
   name: 'Home',

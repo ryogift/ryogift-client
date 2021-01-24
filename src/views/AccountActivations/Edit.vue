@@ -10,9 +10,7 @@
 <script>
 import InfoNotification from '@/components/atoms/Notification/InfoNotification.vue'
 import ErrorNotification from '@/components/atoms/Notification/ErrorNotification.vue'
-import RepositoryFactory from '@/api/RepositoryFactory'
-
-const AuthRepository = RepositoryFactory.get('auth')
+import AuthRepository from '@/api/AuthRepository'
 
 export default {
   name: 'AccountActivationsEdit',

@@ -34,9 +34,7 @@ import CreateButton from '@/components/atoms/Button/CreateButton.vue'
 import EllipsisDropDown from '@/components/molecules/EllipsisDropDown.vue'
 import PostModal from '@/components/organisms/PostModal.vue'
 import RemoveModal from '@/components/organisms/RemoveModal.vue'
-import RepositoryFactory from '@/api/RepositoryFactory'
-
-const UserPostsRepository = RepositoryFactory.get('userPosts')
+import UserPostsRepository from '@/api/UserPostsRepository'
 
 export default {
   name: 'UserPosts',

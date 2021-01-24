@@ -71,9 +71,7 @@ import Logo from '@/components/atoms/Logo.vue'
 import LoginLinkButton from '@/components/molecules/LoginLinkButton.vue'
 import SignupLinkButton from '@/components/molecules/SignupLinkButton.vue'
 import Link from '@/components/atoms/Link.vue'
-import RepositoryFactory from '@/api/RepositoryFactory'
-
-const AuthRepository = RepositoryFactory.get('auth')
+import AuthRepository from '@/api/AuthRepository'
 
 export default {
   name: 'Header',

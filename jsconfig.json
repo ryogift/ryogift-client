@@ -8,6 +8,6 @@
     }
   },
   "typeAcquisition": {
-    "exclude": ["dotenv"]
+    "exclude": ["dotenv", "source-map", "tsconfig-paths"]
   }
 }
