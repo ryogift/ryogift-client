@@ -18,7 +18,7 @@
         </template>
         <template v-else>
           <a role="button" class="navbar-burger w-auto" aria-label="menu" aria-expanded="false">
-            <div class="navbar-item">
+            <div class="navbar-item nav-link">
               <LoginLinkButton class="mr-2" @click="loginLink" />
               <SignupLinkButton class="mr-2" @click="signupLink" />
             </div>
@@ -54,7 +54,7 @@
         </template>
         <template v-else>
           <div class="navbar-end">
-            <div class="navbar-item">
+            <div class="navbar-item nav-link">
               <LoginLinkButton class="mr-2" @click="loginLink" />
               <SignupLinkButton class="mr-2" @click="signupLink" />
             </div>
