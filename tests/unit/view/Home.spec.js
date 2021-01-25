@@ -15,7 +15,15 @@ jest.mock('@/api/PostsRepository', () => ({
 
 describe('Home.vue', () => {
   test('投稿一覧が表示されること', async () => {
-    const wrapper = mount(Home)
+    const $store = {
+      state: { user: { name: 'test', admin: false } },
+      getters: { isCurrentUser: state => state.user.name !== '' }
+    }
+    const wrapper = mount(Home, {
+      global: {
+        mocks: { $store }
+      }
+    })
     await flushPromises()
     expect(wrapper.html()).toContain('test1')
     expect(wrapper.html()).toContain('test2')
