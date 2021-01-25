@@ -37,7 +37,7 @@ export default {
     }
   },
   created () {
-    if (isCurrentUser) {
+    if (this.isCurrentUser) {
       this.fetch()
     }
   },
