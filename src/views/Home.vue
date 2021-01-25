@@ -37,7 +37,9 @@ export default {
     }
   },
   created () {
-    this.fetch()
+    if (isCurrentUser) {
+      this.fetch()
+    }
   },
   mounted () {
     document.title = 'ホーム | Ryo.gift'
