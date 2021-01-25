@@ -17,7 +17,7 @@
           </a>
         </template>
         <template v-else>
-          <a role="button" class="navbar-burger w-auto" aria-label="menu" aria-expanded="false">
+          <a role="button" class="navbar-burger w-auto tap" aria-label="menu" aria-expanded="false">
             <div class="navbar-item nav-link">
               <LoginLinkButton class="mr-2" @click="loginLink" />
               <SignupLinkButton class="mr-2" @click="signupLink" />
@@ -169,10 +169,8 @@ export default {
   background-color: white !important;
   user-select: none;
 }
-.nav-link:active {
-  color:#4a4a4a;
-  background-color: white !important;
-  user-select: none;
+.tap {
+  -webkit-tap-highlight-color: rgba(255, 255, 255, 0);
 }
 .right-dropdown {
   border-top: none;
