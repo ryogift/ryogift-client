@@ -169,6 +169,11 @@ export default {
   background-color: white !important;
   user-select: none;
 }
+.nav-link:active {
+  color:#4a4a4a;
+  background-color: white !important;
+  user-select: none;
+}
 .right-dropdown {
   border-top: none;
   box-shadow: 0px 2px 8px 0px rgba(10, 10, 10, 0.1);
