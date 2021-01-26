@@ -17,14 +17,14 @@
       <section class="hero center">
         <div class="hero-body">
           <div class="container">
-            <h1 class="title">ポートフォリオ</h1>
+            <h1 class="title left">ポートフォリオ</h1>
             <p class="left">ポートフォリオとして、ユーザー登録、認証、投稿機能をSPA(Single Page Application)で開発しました。</p>
             <p class="left">以下は今回、開発したアーキテクチャの構成です。</p>
             <img src="@/assets/architecture.png" width="600" />
             <p class="left">素早いリリースを目的として普段、業務で利用している開発言語やフレームワークを使って開発しています。</p>
             <p class="left">フロントエンドの技術のみ、最近リリースされたVue.js 3を利用しています。</p>
 
-            <h1 class="title mt-5">機能イメージ</h1>
+            <h1 class="title mt-5 left">機能イメージ</h1>
             <p>ホーム(全ユーザーの投稿一覧)</p>
             <img class="mb-5" src="@/assets/home.png" width="600" border="1" />
 
@@ -117,7 +117,6 @@ export default {
 }
 .left {
   text-align: left;
-  padding-left: 64px;
 }
 .inline-block {
   display: inline-block;
