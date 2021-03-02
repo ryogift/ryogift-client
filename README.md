@@ -1,4 +1,6 @@
-# ryogift-client
+<a href="https://codeclimate.com/github/ryogift/ryogift-client/maintainability"><img src="https://api.codeclimate.com/v1/badges/fdb92c691ff6da07244b/maintainability" /></a>
+<a href="https://codeclimate.com/github/ryogift/ryogift-client/test_coverage"><img src="https://api.codeclimate.com/v1/badges/fdb92c691ff6da07244b/test_coverage" /></a>
+# Ryo.gift Client
 
 ## Project setup
 ```
@@ -24,7 +26,6 @@ npm run test:unit
 ```
 npm run lint
 ```
-
 
 ### Customize configuration
 See [Configuration Reference](https://cli.vuejs.org/config/).
