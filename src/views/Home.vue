@@ -46,7 +46,7 @@ export default {
     }
   },
   mounted () {
-    document.title = 'ホーム | Ryo.gift'
+    document.title = 'RyoGift'
   },
   computed: {
     isCurrentUser () {
