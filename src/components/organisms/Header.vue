@@ -89,7 +89,7 @@ export default {
     }
   },
   created () {
-    if (document.cookie !== '') {
+    if (document.cookie.match(/user_id/)) {
       this.currentUser()
     } else {
       this.isHeader = true
