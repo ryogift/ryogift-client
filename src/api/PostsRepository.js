@@ -1,11 +1,13 @@
 import Reposiotry from './Repository'
 
 const resource = '/posts'
-export default {
-  index () {
+class PostsRepository {
+  static index () {
     return Reposiotry.get(`${resource}`)
-  },
-  show (id) {
+  }
+
+  static show (id) {
     return Reposiotry.get(`${resource}/${id}`)
   }
 }
+export default PostsRepository

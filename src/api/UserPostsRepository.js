@@ -1,20 +1,25 @@
 import Reposiotry from './Repository'
 
 const resource = '/user_posts'
-export default {
-  index () {
+class UserPostsRepository {
+  static index () {
     return Reposiotry.get(`${resource}`)
-  },
-  show (id) {
+  }
+
+  static show (id) {
     return Reposiotry.get(`${resource}/${id}`)
-  },
-  create (payload) {
+  }
+
+  static create (payload) {
     return Reposiotry.post(`${resource}`, payload)
-  },
-  update (id, payload) {
+  }
+
+  static update (id, payload) {
     return Reposiotry.put(`${resource}/${id}`, payload)
-  },
-  destroy (id) {
+  }
+
+  static destroy (id) {
     return Reposiotry.delete(`${resource}/${id}`)
   }
 }
+export default UserPostsRepository

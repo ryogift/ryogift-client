@@ -1,23 +1,29 @@
 import Reposiotry from './Repository'
 
 const resource = '/users'
-export default {
-  get () {
+class UsersRepository {
+  static get () {
     return Reposiotry.get(`${resource}`)
-  },
-  getUser (id) {
+  }
+
+  static getUser (id) {
     return Reposiotry.get(`${resource}/${id}`)
-  },
-  signup (payload) {
+  }
+
+  static signup (payload) {
     return Reposiotry.post(`${resource}`, payload)
-  },
-  lock (id) {
+  }
+
+  static lock (id) {
     return Reposiotry.put(`${resource}/${id}/lock`)
-  },
-  unlock (id) {
+  }
+
+  static unlock (id) {
     return Reposiotry.put(`${resource}/${id}/unlock`)
-  },
-  updatePassword (id, payload) {
+  }
+
+  static updatePassword (id, payload) {
     return Reposiotry.put(`${resource}/${id}/update_password`, payload)
   }
 }
+export default UsersRepository

@@ -1,22 +1,29 @@
 import Reposiotry from './Repository'
 
-export default {
-  login (payload) {
+class AuthRepository {
+  static login (payload) {
     return Reposiotry.post('/login', payload)
-  },
-  logout () {
+  }
+
+  static logout () {
     return Reposiotry.delete('/logout')
-  },
-  accountActivations (token, payload) {
+  }
+
+  static accountActivations (token, payload) {
     return Reposiotry.put(`/account_activations/${token}`, payload)
-  },
-  passwordResetsCreate (payload) {
+  }
+
+  static passwordResetsCreate (payload) {
     return Reposiotry.post('/password_resets', payload)
-  },
-  passwordResetsUpdate (token, payload) {
+  }
+
+  static passwordResetsUpdate (token, payload) {
     return Reposiotry.put(`/password_resets/${token}`, payload)
-  },
-  clientUser () {
+  }
+
+  static clientUser () {
     return Reposiotry.get('/client_user')
   }
 }
+
+export default AuthRepository
