@@ -10,6 +10,8 @@ module.exports = {
     "!**/api/**",
     "!**/coverage/**",
     "!babel.config.js",
-    "!jest.config.js"
+    "!jest.config.js",
+    "!src/main.js",
+    "!src/router/index.js"
   ]
 }
