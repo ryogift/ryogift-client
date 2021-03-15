@@ -46,7 +46,7 @@ export default {
     }
   },
   mounted () {
-    document.title = 'RyoGift'
+    document.title = 'Ryogift'
   },
   computed: {
     isCurrentUser () {
