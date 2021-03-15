@@ -1,6 +1,6 @@
 <a href="https://codeclimate.com/github/ryogift/ryogift-client/maintainability"><img src="https://api.codeclimate.com/v1/badges/fdb92c691ff6da07244b/maintainability" /></a>
 <a href="https://codeclimate.com/github/ryogift/ryogift-client/test_coverage"><img src="https://api.codeclimate.com/v1/badges/fdb92c691ff6da07244b/test_coverage" /></a>
-# RyoGift Client
+# Ryogift Client
 
 ## Project setup
 ```
