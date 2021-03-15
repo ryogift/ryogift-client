@@ -1,6 +1,7 @@
 import { mount } from '@vue/test-utils'
 import flushPromises from 'flush-promises'
 import SignupSection from '@/components/organisms/SignupSection.vue'
+import UsersRepository from '@/api/UsersRepository'
 
 jest.mock('@/api/UsersRepository', () => ({
   signup: jest.fn()
@@ -45,5 +46,81 @@ describe('SignupSection.vue', () => {
     await wrapper.get('.submit-button').trigger('submit.prevent')
     await flushPromises()
     expect(wrapper.get('.info-notification').text()).toBe('メールをチェックしてアカウントを有効にしてください。')
+  })
+
+  test('APIエラー(401)時にエラーメッセージが表示されること', async () => {
+    const error = new Error()
+    const errorMessage = 'メールアドレスとパスワードの組み合わせが無効です。'
+    error.response = { status: 401, data: { error: { message: errorMessage } } }
+    UsersRepository.signup.mockRejectedValue(error)
+    const wrapper = mount(SignupSection)
+    await wrapper.get('.submit-button').trigger('submit.prevent')
+    await flushPromises()
+    expect(wrapper.get('.error-notification').text()).toBe(errorMessage)
+  })
+
+  test('APIエラー(403)時にエラーメッセージが表示されること', async () => {
+    const error = new Error()
+    const errorMessage = 'アカウントは有効になっていません。メールをご確認ください。'
+    error.response = { status: 403, data: { error: { message: errorMessage } } }
+    UsersRepository.signup.mockRejectedValue(error)
+    const wrapper = mount(SignupSection)
+    await wrapper.get('.submit-button').trigger('submit.prevent')
+    await flushPromises()
+    expect(wrapper.get('.error-notification').text()).toBe(errorMessage)
+  })
+
+  test('APIエラー(名前が未入力)時にエラーメッセージが表示されること', async () => {
+    const error = new Error()
+    const errorMessages = ['ご入力ください。']
+    error.response = { status: 422, data: { name: errorMessages } }
+    UsersRepository.signup.mockRejectedValue(error)
+    const wrapper = mount(SignupSection)
+    await wrapper.get('.submit-button').trigger('submit.prevent')
+    await flushPromises()
+    expect(wrapper.get('.error-messages').text()).toBe(errorMessages[0])
+  })
+
+  test('APIエラー(メールアドレスが未入力)時にエラーメッセージが表示されること', async () => {
+    const error = new Error()
+    const errorMessages = ['ご入力ください。']
+    error.response = { status: 422, data: { email: errorMessages } }
+    UsersRepository.signup.mockRejectedValue(error)
+    const wrapper = mount(SignupSection)
+    await wrapper.get('.submit-button').trigger('submit.prevent')
+    await flushPromises()
+    expect(wrapper.get('.error-messages').text()).toBe(errorMessages[0])
+  })
+
+  test('APIエラー(パスワードが未入力)時にエラーメッセージが表示されること', async () => {
+    const error = new Error()
+    const errorMessages = ['ご入力ください。']
+    error.response = { status: 422, data: { password: errorMessages } }
+    UsersRepository.signup.mockRejectedValue(error)
+    const wrapper = mount(SignupSection)
+    await wrapper.get('.submit-button').trigger('submit.prevent')
+    await flushPromises()
+    expect(wrapper.get('.error-messages').text()).toBe(errorMessages[0])
+  })
+
+  test('APIエラー(パスワードの確認が未入力)時にエラーメッセージが表示されること', async () => {
+    const error = new Error()
+    const errorMessages = ['ご入力ください。']
+    error.response = { status: 422, data: { passwordConfirmation: errorMessages } }
+    UsersRepository.signup.mockRejectedValue(error)
+    const wrapper = mount(SignupSection)
+    await wrapper.get('.submit-button').trigger('submit.prevent')
+    await flushPromises()
+    expect(wrapper.get('.error-messages').text()).toBe(errorMessages[0])
+  })
+
+  test('APIエラー(予期せぬエラー)時にエラーメッセージが表示されること', async () => {
+    const error = new Error()
+    error.response = { status: 500 }
+    UsersRepository.signup.mockRejectedValue(error)
+    const wrapper = mount(SignupSection)
+    await wrapper.get('.submit-button').trigger('submit.prevent')
+    await flushPromises()
+    expect(wrapper.get('.error-notification').text()).toBe('予期せぬエラーです。')
   })
 })
