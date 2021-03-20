@@ -4,6 +4,7 @@
       <div class="navbar-brand h-60">
         <div class="navbar-item">
           <Logo @click="homeLink" />
+          <p class="pt-2 ml-3 sub-title">Product prototype</p>
         </div>
 
         <template v-if="isCurrentUser">
@@ -194,5 +195,9 @@ export default {
   right: 0;
   z-index: 10;
   background-color: rgb(156 156 156 / 29%);
+}
+.sub-title {
+  font-size: 20px;
+  color: #848484;
 }
 </style>

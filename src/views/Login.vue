@@ -15,7 +15,7 @@ export default {
     LoginSection
   },
   mounted () {
-    document.title = 'ログイン | Ryo.gift'
+    document.title = 'ログイン | RyoGIFT'
   }
 }
 </script>

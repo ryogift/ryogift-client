@@ -60,7 +60,7 @@ export default {
     this.fetch()
   },
   mounted () {
-    document.title = '投稿一覧 | Ryo.gift'
+    document.title = '投稿一覧 | RyoGIFT'
   },
   computed: {
     isCurrentUser () {
