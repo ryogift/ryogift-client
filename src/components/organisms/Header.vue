@@ -4,7 +4,6 @@
       <div class="navbar-brand h-60">
         <div class="navbar-item">
           <Logo @click="homeLink" />
-          <p class="pt-2 ml-3 sub-title">Product prototype</p>
         </div>
 
         <template v-if="isCurrentUser">
@@ -29,6 +28,7 @@
 
       <div id="navbarBasicExample" class="navbar-menu" :class="{ 'is-active': isNavbarBurger }">
         <div class="navbar-start">
+          <p class="subtitle">Product prototype</p>
           <template v-if="isCurrentUser">
             <Link class="navbar-item nav-link home-link" label="ホーム" @click="homeLink" />
             <Link class="navbar-item nav-link userposts-link" label="投稿一覧" @click="userPostsLink" />
@@ -196,7 +196,8 @@ export default {
   z-index: 10;
   background-color: rgb(156 156 156 / 29%);
 }
-.sub-title {
+.subtitle {
+  padding-top: 1.3rem;
   font-size: 20px;
   color: #848484;
 }
