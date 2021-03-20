@@ -23,6 +23,9 @@
 
             <p>投稿一覧(ユーザーごとの投稿一覧)</p>
             <img src="@/assets/posts.png" width="600" border="1" />
+            <div class="m-5">
+              <a href="https://blog.ryo.gift" target="_blank">開発者ブログ</a>
+            </div>
           </div>
         </div>
       </section>
@@ -46,7 +49,7 @@ export default {
     }
   },
   mounted () {
-    document.title = 'Ryogift'
+    document.title = 'RyoGIFT | Product prototype'
   },
   computed: {
     isCurrentUser () {

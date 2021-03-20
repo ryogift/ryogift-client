@@ -15,7 +15,7 @@ export default {
     SignupSection
   },
   mounted () {
-    document.title = '新規登録 | Ryo.gift'
+    document.title = '新規登録 | RyoGIFT'
   }
 }
 </script>

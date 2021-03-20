@@ -15,7 +15,7 @@ export default {
     UpdatePasswordSection
   },
   mounted () {
-    document.title = 'パスワードの変更 | Ryo.gift'
+    document.title = 'パスワードの変更 | RyoGIFT'
   }
 }
 </script>
