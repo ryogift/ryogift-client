@@ -17,14 +17,19 @@
       <section class="hero center">
         <div class="hero-body">
           <div class="container">
-            <h1 class="title mt-5 left">機能イメージ</h1>
-            <p>ホーム(全ユーザーの投稿一覧)</p>
-            <img class="mb-5" src="@/assets/home.png" width="600" border="1" />
+            <div class="left flex description">
+              <p>RyoGIFTはプロダクト開発の学習用に構築しています。プロダクトの試作品として運用しており、機能変更が度々発生します。</p>
+            </div>
+            <div class="space">
+              <h5 class="subtitle m-5">機能イメージ</h5>
+              <p>ホーム(全ユーザーの投稿一覧)</p>
+              <img class="mb-5" src="@/assets/home.png" width="500" border="1" />
 
-            <p>投稿一覧(ユーザーごとの投稿一覧)</p>
-            <img src="@/assets/posts.png" width="600" border="1" />
-            <div class="m-5">
-              <a href="https://blog.ryo.gift" target="_blank">開発者ブログ</a>
+              <p>投稿一覧(ユーザーごとの投稿一覧)</p>
+              <img src="@/assets/posts.png" width="500" border="1" />
+            </div>
+            <div class="space">
+              <a class="link" href="https://blog.ryo.gift" target="_blank">開発者ブログ</a>
             </div>
           </div>
         </div>
@@ -92,5 +97,18 @@ export default {
 }
 .inline-block {
   display: inline-block;
+}
+.description {
+  max-width: 400px;
+  margin: auto;
+  text-indent: 1em;
+  line-height: 1.8;
+}
+.space {
+  margin-top: 50px;
+}
+.link {
+  text-decoration: underline;
+  color: #008eb4;
 }
 </style>
